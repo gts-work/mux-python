@@ -27,9 +27,15 @@ Mux uses cross signed TLS root certificates, which may not be compatible with Ub
 ```sh
 pip install git+https://github.com/muxinc/mux-python.git
 ```
+
+```sh
+pip install git+https://github.com/gts-work/mux-python.git
+```
+
 (you may need to run `pip` with root permission)
 
 ### Via source
+
 ```sh
 git checkout https://github.com/muxinc/mux-python.git
 cd mux-python
@@ -42,35 +48,39 @@ python setup.py install --user
 
 Mux Python is a code generated lightweight wrapper around the Mux REST API and reflects them accurately. This has a few consequences you should watch out for:
 
-1) For almost all API responses, the object you're looking for will be in the `data` field on the API response object, as in the example below. This is because we designed our APIs with similar concepts to the [JSON:API](https://jsonapi.org/) standard. This means we'll be able to return more metadata from our API calls (such as related entities) without the need to make breaking changes to our APIs. We've decided not to hide that in this library.
+1. For almost all API responses, the object you're looking for will be in the `data` field on the API response object, as in the example below. This is because we designed our APIs with similar concepts to the [JSON:API](https://jsonapi.org/) standard. This means we'll be able to return more metadata from our API calls (such as related entities) without the need to make breaking changes to our APIs. We've decided not to hide that in this library.
 
-2) We don't use a lot of object orientation. For example API calls that happen on a single asset don't exist in the asset class, but are API calls in the AssetsApi which require an asset ID.
+2. We don't use a lot of object orientation. For example API calls that happen on a single asset don't exist in the asset class, but are API calls in the AssetsApi which require an asset ID.
 
 ### Authentication
+
 To use the Mux API, you'll need an access token and a secret. [Details on obtaining these can be found here in the Mux documentation.](https://docs.mux.com/docs#section-1-get-an-api-access-token)
 
 Its up to you to manage your token and secret. In our examples, we read them from `MUX_TOKEN_ID` and `MUX_TOKEN_SECRET` in your environment.
 
 ### Example Usage
+
 Below is a quick example of using mux-python to list the Video assets stored in your Mux account.
 
 Be sure to also checkout the [exmples directory](examples/):
-* [List Assets, Live Streams, Signing Keys, and Uploads.](examples/video/list-everything.py)
-* [Create an Asset, wait for it to become availiable, and print its playback URL](examples/video/ingest.py)
-* [Create a new Live Stream and retrieve its Stream key.](examples/video/create-live-stream.py)
+
+-   [List Assets, Live Streams, Signing Keys, and Uploads.](examples/video/list-everything.py)
+-   [Create an Asset, wait for it to become availiable, and print its playback URL](examples/video/ingest.py)
+-   [Create a new Live Stream and retrieve its Stream key.](examples/video/create-live-stream.py)
 
 There's also example usage of every API call (also used for testing):
-* [Video](examples/video/)
-  * [Assets](examples/video/exercise-assets.py)
-  * [Live Streams](examples/video/exercise-live-streams.py)
-  * [Signing Keys](examples/video/exercise-signing-keys.py)
-  * [Uploads](examples/video/exercise-uploads.py)
-* [Data](examples/data/)
-  * [Errors](examples/data/exercise-errors.py)
-  * [Exports](examples/data/exercise-exports.py)
-  * [Filters](examples/data/exercise-filters.py)
-  * [Metrics](examples/data/exercise-metrics.py)
-  * [Video Views](examples/data/exercise-video-views.py)
+
+-   [Video](examples/video/)
+    -   [Assets](examples/video/exercise-assets.py)
+    -   [Live Streams](examples/video/exercise-live-streams.py)
+    -   [Signing Keys](examples/video/exercise-signing-keys.py)
+    -   [Uploads](examples/video/exercise-uploads.py)
+-   [Data](examples/data/)
+    -   [Errors](examples/data/exercise-errors.py)
+    -   [Exports](examples/data/exercise-exports.py)
+    -   [Filters](examples/data/exercise-filters.py)
+    -   [Metrics](examples/data/exercise-metrics.py)
+    -   [Video Views](examples/data/exercise-video-views.py)
 
 ```python
 import os
@@ -118,10 +128,13 @@ All exceptions inherit from `ApiException`, you can catch it as in the example a
 [Be sure to check out the documentation in the `docs` directory.](docs/)
 
 ## Issues
+
 If you run into problems, [please raise a GitHub issue,](https://github.com/muxinc/mux-python/issues) filling in the issue template. We'll take a look as soon as possible.
 
 ## Contributing
+
 Please do not submit PRs against this package. It is generated from our OpenAPI definitions - [Please open an issue instead!](https://github.com/muxinc/mux-python/issues)
 
 ## License
+
 [MIT License.](LICENSE) Copyright 2019 Mux, Inc.
